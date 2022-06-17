@@ -21,10 +21,14 @@ ExpressService_1.ExpressService.getInstance().appExpress.get('/', function (req,
             tags: (_a = req.query.tag) !== null && _a !== void 0 ? _a : '',
         }
     }).then(function (response) {
+        var _a;
         var jsonFlickrFeed = function (response) {
             return (response);
         };
         var data = eval(response.data);
+        var chunk = 6;
+        var page = +((_a = req.query.page) !== null && _a !== void 0 ? _a : 1);
+        data.items = data.items.slice((page - 1) * chunk, page * chunk - 1);
         res.send(data);
     }).catch(function (err) {
         console.log('res', err);

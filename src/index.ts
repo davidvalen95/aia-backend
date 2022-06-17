@@ -29,6 +29,9 @@ ExpressService.getInstance().appExpress.get('/',(req,res)=>{
             }
 
            var data =  eval(response.data);
+            var chunk =6;
+            var page:number = +( req.query.page ?? 1);
+            data.items = data.items.slice((page-1)*chunk, page*chunk-1)
         res.send(data);
     }).catch(err=>{
         console.log('res',err)
