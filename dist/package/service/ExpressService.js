@@ -76,7 +76,6 @@ var ExpressService = /** @class */ (function (_super) {
             console.log("express headers", ExpressService.headers);
             for (var key in ExpressService.headers) {
                 var value = ExpressService.headers[key];
-                console.log("express headers", key, value);
                 res.setHeader(key, value);
             }
             next();
@@ -88,7 +87,6 @@ var ExpressService = /** @class */ (function (_super) {
             throw new Error("Port not defined in  config and env");
         }
         this.appExpress.listen(port, function () {
-            console.log('running on port ' + port);
         });
     };
     ExpressService.prototype.getValidationChain = function (validations) {

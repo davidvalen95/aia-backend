@@ -14,7 +14,13 @@ ExpressService_1.ExpressService.headers = {
     "Access-Control-Allow-Origin": "*"
 };
 ExpressService_1.ExpressService.getInstance().appExpress.get('/', function (req, res) {
-    axios_1.default.get('http://www.flickr.com/services/feeds/photos_public.gne?format=json').then(function (response) {
+    var _a;
+    axios_1.default.get('http://www.flickr.com/services/feeds/photos_public.gne', {
+        params: {
+            format: "json",
+            tags: (_a = req.query.tag) !== null && _a !== void 0 ? _a : '',
+        }
+    }).then(function (response) {
         var jsonFlickrFeed = function (response) {
             return (response);
         };
