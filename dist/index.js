@@ -29,6 +29,10 @@ ExpressService_1.ExpressService.getInstance().appExpress.get('/', function (req,
         var data = eval(response.data);
         var chunk = 3;
         var page = +((_a = req.query.page) !== null && _a !== void 0 ? _a : 1);
+        data.pagination = {
+            page: page,
+            totalPage: Math.ceil(data.items.length / (chunk - 1)),
+        };
         data.items = data.items.slice((page - 1) * chunk, page * chunk - 1);
         res.send(data);
     }).catch(function (err) {
