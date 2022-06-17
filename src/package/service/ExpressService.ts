@@ -26,7 +26,6 @@ export class ExpressService extends Singleton<ExpressService>() {
             console.log("express headers",ExpressService.headers)
             for(var key in ExpressService.headers){
                 var value = ExpressService.headers[key];
-                console.log("express headers",key,value)
 
                 res.setHeader(key,value);
             }
@@ -41,7 +40,6 @@ export class ExpressService extends Singleton<ExpressService>() {
         }
 
         this.appExpress.listen(port, () => {
-            console.log('running on port ' + port)
         })
 
 

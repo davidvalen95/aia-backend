@@ -18,7 +18,12 @@ ExpressService.headers = {
 
 ExpressService.getInstance().appExpress.get('/',(req,res)=>{
 
-    axios.get('http://www.flickr.com/services/feeds/photos_public.gne?format=json').then(function(response){
+    axios.get('http://www.flickr.com/services/feeds/photos_public.gne',{
+        params: {
+            format: "json",
+            tags: req.query.tag ?? '',
+        }
+    }).then(function(response){
             var jsonFlickrFeed = (response)=>{
                 return (response)
             }
