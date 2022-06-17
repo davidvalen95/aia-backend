@@ -25,8 +25,9 @@ ExpressService_1.ExpressService.getInstance().appExpress.get('/', function (req,
         var jsonFlickrFeed = function (response) {
             return (response);
         };
+        //# manual pagination because flickr dont provide pagination
         var data = eval(response.data);
-        var chunk = 6;
+        var chunk = 3;
         var page = +((_a = req.query.page) !== null && _a !== void 0 ? _a : 1);
         data.items = data.items.slice((page - 1) * chunk, page * chunk - 1);
         res.send(data);
